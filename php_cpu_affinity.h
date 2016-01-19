@@ -42,6 +42,7 @@ extern zend_module_entry cpu_affinity_module_entry;
 #include <sched.h>
 #include <pthread.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 PHP_MINIT_FUNCTION(cpu_affinity);
 PHP_MSHUTDOWN_FUNCTION(cpu_affinity);

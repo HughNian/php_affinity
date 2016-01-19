@@ -194,11 +194,17 @@ PHP_FUNCTION(set_cpu_mask)
     unsigned int active_cpu;
     int arg_len;
     cpu_set_t cpu_mask;
-    
+    int cpu_num;    
+
     if(zend_parse_parameters(argc TSRMLS_CC, "l", &active_cpu, &arg_len) == FAILURE){
         return;
     }
     
+    cpu_num = sysconf(_SC_NPROCESSORS_CONF);
+
+    if(active_cpu > cpu_num){
+        RETURN_FALSE;
+    }
 
     CPU_ZERO(&cpu_mask);
     CPU_SET(active_cpu, &cpu_mask);
