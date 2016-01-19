@@ -1,0 +1,8 @@
+cpu_affinity.lo: /home/niansong/Downloads/php-5.5.30/ext/cpu_affinity/cpu_affinity.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/niansong/Downloads/php-5.5.30/ext/cpu_affinity $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/niansong/Downloads/php-5.5.30/ext/cpu_affinity/cpu_affinity.c -o cpu_affinity.lo 
+$(phplibdir)/cpu_affinity.la: ./cpu_affinity.la
+	$(LIBTOOL) --mode=install cp ./cpu_affinity.la $(phplibdir)
+
+./cpu_affinity.la: $(shared_objects_cpu_affinity) $(CPU_AFFINITY_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_cpu_affinity) $(CPU_AFFINITY_SHARED_LIBADD)
+

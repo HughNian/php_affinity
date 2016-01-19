@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external, use ARG_WITH
+// ARG_WITH("cpu_affinity", "for cpu_affinity support", "no");
+
+// Otherwise, use ARG_ENABLE
+// ARG_ENABLE("cpu_affinity", "enable cpu_affinity support", "no");
+
+if (PHP_CPU_AFFINITY != "no") {
+	EXTENSION("cpu_affinity", "cpu_affinity.c");
+}
+
